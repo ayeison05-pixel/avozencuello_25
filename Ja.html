@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-wrap=no">
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  
+  <title>A Voz en Cuello</title>
+</head>
+
+<style>
+    h1 {
+      margin-top: 3rem;
+      border-radius: 4px;
+      padding: 0.2rem;
+      color: snow;
+      font-size: 50px;
+      text-align: center;
+      background: #1d0020;
+    }
+
+    /* h2 convertido en botón */
+    h2 {
+      color: #1d0020;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
+      font-size: 70px;
+      margin-top: 1%;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: 0.2s;
+    }
+
+     h2:active {
+       background: pink;
+       opacity: 0.6;
+       transform: scale(0.97);
+     }
+
+    img {
+      margin-top: 1rem;
+      display: block;
+      margin: 10px auto;
+      width: 400px;
+    }
+
+    /* Modal */
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #modalContent {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 90%;
+      position: relative;
+    }
+
+    #cerrar {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 25px;
+      cursor: pointer;
+    }
+</style>
+
+
+<body>
+  <h1>A Voz en Cuello</h1>
+
+  <img src="jei1.png" alt="Imagen">
+
+  <!-- H2 como botón -->
+  <h2 id="btnPodcast">podcast</h2>
+
+  <!-- Modal -->
+  <div id="modal">
+    <div id="modalContent">
+      <span id="cerrar">✖</span>
+
+      <iframe id="videoFrame" width="350" height="200"
+              src=""
+              frameborder="0"
+              allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const btn = document.getElementById("btnPodcast");
+    const cerrar = document.getElementById("cerrar");
+    const frame = document.getElementById("videoFrame");
+
+    btn.onclick = () => {
+      frame.src = "https://youtube.com/shorts/2nu39Ck3K3I?si=ssPsknE7bO7v8ipR";
+      modal.style.display = "flex";
+    };
+
+    cerrar.onclick = () => {
+      modal.style.display = "none";
+      frame.src = "";
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+        frame.src = "";
+      }
+    };
+  </script>
+
+</body>
+</html>
